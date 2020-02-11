@@ -14,11 +14,11 @@ public interface RetrofitInterface {
                                     @Field("mobile_number") String mobile_number,
                                     @Field("password") String password);
 
-    @POST("login")
+   /* @POST("login")
     @FormUrlEncoded
     Observable<String> registerUser(@Field("email") String email,
                                     @Field("password") String password
                                     );
 
-
+*/
 }

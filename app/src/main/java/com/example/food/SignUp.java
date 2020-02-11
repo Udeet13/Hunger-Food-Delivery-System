@@ -12,7 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import io.reactivex.Observer;
+import io.reactivex.Scheduler;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Retrofit;
 
 public class SignUp extends AppCompatActivity {
@@ -46,12 +51,6 @@ public class SignUp extends AppCompatActivity {
         create_password = findViewById(R.id.create_password);
         confirm_password = findViewById(R.id.confirm_password);
 
-        final String name = this.full_name.getEditText().getText().toString();
-        final String email = this.email.getEditText().getText().toString();
-        final String mobile_number = this.mobile_number.getEditText().getText().toString();
-        final String create_password = this.create_password.getEditText().getText().toString();
-        final String confirm_password = this.confirm_password.getEditText().getText().toString();
-
 
 
 
@@ -69,16 +68,47 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                // startActivity(new Intent(SignUp.this,IntroActivity.class));
-                Regist();
+                final String name = full_name.getEditText().getText().toString();
+                final String Email = email.getEditText().getText().toString();
+                final String mobileNumber = mobile_number.getEditText().getText().toString();
+                final String createPassword = create_password.getEditText().getText().toString();
+                final String confirmPassword = confirm_password.getEditText().getText().toString();
+
 
                 //constraints
+
 
                 if(TextUtils.isEmpty(name)) {
                     Toast.makeText(SignUp.this ,"Name Cannot be null",Toast.LENGTH_SHORT).show();
                     return;
+                    }
+                if(TextUtils.isEmpty(Email)) {
+                    Toast.makeText(SignUp.this,"Email can not be null",Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
+                if(TextUtils.isEmpty(mobileNumber)) {
+                    Toast.makeText(SignUp.this, "Mobile number can not be null",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(createPassword)) {
+                    Toast.makeText(SignUp.this,"Create password",Toast.LENGTH_SHORT).show();
+                    return;
 
+                }
+                if(TextUtils.isEmpty(confirmPassword)) {
+                    Toast.makeText(SignUp.this,"Confirm the password",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                compositeDisposable.add(retrofitInterface.registerUser(name,Email,mobileNumber,confirmPassword)
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(new Consumer<String>() {
+                                            @Override
+                                            public void accept(String response) throws Exception {
+                                                Toast.makeText(SignUp.this,"" + response,Toast.LENGTH_SHORT).show();
+                                            }
+                                        }));
 
             }
         });
@@ -86,10 +116,5 @@ public class SignUp extends AppCompatActivity {
     }
 
 
-    private void Regist() {
 
-
-
-
-    }
 }
