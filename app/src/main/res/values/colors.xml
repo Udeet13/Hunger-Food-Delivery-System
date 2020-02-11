@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Color for button style -->
+    <color name="gradient_start_color">#FF6D00</color>
+    <color name="gradient_end_color">#FFAB00</color>
+
+    <!-- colors for tab and screen text -->
+    <color name="Light">#7F7F7F</color>
+    <color name="Dark">#2D2D2D</color>
+    <color name="Ultra_Light">#B2B2B2</color>
+    <color name="super_light">#F2F2F2</color>
+    <color name="BG_colour">#FAFAFA</color>
+    <color name="Safed">#FFFFFF</color>
+    <color name="black_transparent">#99000000</color>
+
+</resources>

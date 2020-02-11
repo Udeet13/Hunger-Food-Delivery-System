@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/amaranth_bold</item>
+        <item>@font/basic</item>
+        <item>@font/cabin</item>
+        <item>@font/dancing_script_bold</item>
+        <item>@font/galada</item>
+        <item>@font/leckerli_one</item>
+        <item>@font/pacifico</item>
+        <item>@font/rubik</item>
+        <item>@font/rubik_bold</item>
+    </array>
+</resources>
